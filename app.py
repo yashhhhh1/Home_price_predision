@@ -1,15 +1,18 @@
 from flask import Flask, request, jsonify
-from waitress import serve
 import util
 import warnings
+import os
 
 # Ignore warnings from sklearn
 warnings.filterwarnings("ignore", category=UserWarning, module='sklearn')
 
-# Initialize the Flask app - remove the second initialization
-# You're importing app from app.server and then creating a new Flask instance
-# which could cause conflicts
+# Initialize the Flask app
 app = Flask(__name__)
+
+# Load artifacts at startup, not just when running as main
+print("Loading artifacts...")
+util.load_saved_artifacts()
+print("Artifacts loaded successfully")
 
 # Route for getting location names
 @app.route('/get_location_names', methods=['GET'])
@@ -35,5 +38,6 @@ def predict_home_price():
     return response
 
 if __name__ == '__main__':
-    util.load_saved_artifacts()  # Make sure artifacts are loaded
+    from waitress import serve
+    util.load_saved_artifacts()
     serve(app, host='0.0.0.0', port=8080)
