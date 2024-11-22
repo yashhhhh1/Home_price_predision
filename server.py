@@ -1,5 +1,10 @@
+
+from waitress import serve
+import os
 from flask import Flask, request, jsonify
 import util
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module='sklearn')
 
 app = Flask(__name__)
 
@@ -27,7 +32,6 @@ def predict_home_price():
     return response
 
 if __name__ == "__main__":
-    from werkzeug.serving import run_simple
+    port = int(os.environ.get("PORT", 5000))
     util.load_saved_artifacts()
-    run_simple('0.0.0.0', 5000, app) 
-    
+    serve(app, host='0.0.0.0', port=port)
