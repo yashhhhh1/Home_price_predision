@@ -1,13 +1,14 @@
 from flask import Flask, request, jsonify
 from waitress import serve
-import os
 import util
 import warnings
 
 # Ignore warnings from sklearn
 warnings.filterwarnings("ignore", category=UserWarning, module='sklearn')
 
-# Initialize the Flask app
+# Initialize the Flask app - remove the second initialization
+# You're importing app from app.server and then creating a new Flask instance
+# which could cause conflicts
 app = Flask(__name__)
 
 # Route for getting location names
@@ -33,8 +34,6 @@ def predict_home_price():
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-# Serve the app using waitress
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+if __name__ == '__main__':
     util.load_saved_artifacts()  # Make sure artifacts are loaded
-    serve(app, host='0.0.0.0', port=port)
+    serve(app, host='0.0.0.0', port=8080)
