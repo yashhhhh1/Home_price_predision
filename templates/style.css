@@ -1,0 +1,220 @@
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:300); */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.switch-field {
+  display: flex;
+  margin-bottom: 36px;
+  overflow: hidden;
+}
+
+.switch-field input {
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  overflow: hidden;
+}
+
+.switch-field label {
+  background-color: #e4e4e4;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  padding: 8px 16px;
+  margin-right: -1px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.switch-field label:hover {
+  background-color: #d4d4d4;
+  transform: scale(1.1);
+  cursor: pointer;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.switch-field input:checked+label {
+  background-color: #a5dc86;
+  box-shadow: none;
+  animation: bounce 0.3s ease-in-out;
+}
+
+.switch-field label:first-of-type {
+  border-radius: 4px 0 0 4px;
+}
+
+.switch-field label:last-of-type {
+  border-radius: 0 4px 4px 0;
+}
+
+.form {
+  max-width: 270px;
+  font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+  font-weight: normal;
+  line-height: 1.625;
+  margin: 8px auto;
+  padding-left: 16px;
+  z-index: 2;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #d9f14f;
+  transition: color 0.3s ease-in-out;
+}
+
+h2:hover {
+  color: #1e2223;
+}
+
+.area,
+.location {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 76%;
+  border: 0;
+  margin: 0 0 10px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  height: 35px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.area:focus,
+.location:focus {
+  background: #e8e8e8;
+  transform: scale(1.05);
+  border-color: #009688;
+}
+
+.submit {
+  background: #9cae39;
+  width: 76%;
+  border: 0;
+  margin: 25px 0 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  height: 35px;
+  text-align: center;
+  border-radius: 5px;
+  color: rgb(72, 19, 19);
+  transition: all 0.3s ease-in-out;
+}
+
+.submit:hover {
+  background: #243225;
+  transform: scale(1.1);
+  animation: wiggle 0.5s ease-in-out infinite;
+  color: #ffffff;
+}
+
+.result {
+  background: #dcd686;
+  width: 76%;
+  border: 0;
+  margin: 25px 0 10px;
+  box-sizing: border-box;
+  font-size: 15px;
+  height: 35px;
+  text-align: center;
+  color: #333;
+}
+
+.result h2 {
+  color: #ff9800;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.img {
+  background: url('https://wallpaperaccess.com/full/1700233.jpg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-size: 100% 100%;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #4caf50;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+body,
+html {
+  height: 100%;
+}
